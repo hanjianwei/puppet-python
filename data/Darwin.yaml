@@ -1,0 +1,10 @@
+---
+python::version::env:
+  Darwin:
+    BOXEN_S3_HOST: "%{::boxen_s3_host}"
+    BOXEN_S3_BUCKET: "%{::boxen_s3_bucket}"
+    CFLAGS: "-I%{::homebrew::config::installdir}/include -I/opt/X11/include"
+    LDFLAGS: "-L%{::homebrew::config::installdir}/lib -L/opt/X11/lib"
+
+python::prefix: "%{::boxen::config::home}"
+python::user: "%{::boxen_user}"

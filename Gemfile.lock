@@ -17,7 +17,6 @@ GEM
       puppet-lint (~> 0.3)
       puppetlabs_spec_helper (~> 0.4)
       rspec-puppet (~> 1.0)
-    deep_merge (1.0.1)
     diff-lcs (1.2.5)
     facter (2.1.0)
       CFPropertyList (~> 2.2.6)
@@ -31,7 +30,7 @@ GEM
     librarian (0.1.2)
       highline
       thor (~> 0.15)
-    librarian-puppet (1.0.4)
+    librarian-puppet (1.0.5)
       json
       librarian (>= 0.1.2)
     metaclass (0.0.4)
@@ -78,5 +77,3 @@ PLATFORMS
 
 DEPENDENCIES
   cardboard (~> 2.1)
-  deep_merge (~> 1.0)
-  librarian-puppet (= 1.0.4)

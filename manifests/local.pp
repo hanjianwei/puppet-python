@@ -3,7 +3,7 @@
 #
 # Usage:
 #
-#     python::local { '/path/to/a/thing': version => '1.9.3-p194' }
+#     python::local { '/path/to/a/thing': version => '2.7.8' }
 
 define python::local($version = undef, $ensure = present) {
   include python
@@ -22,11 +22,6 @@ define python::local($version = undef, $ensure = present) {
       ensure  => $ensure,
       content => "${version}\n",
       replace => true,
-      require => $_python_local_require ;
-
-    "${name}/.pyenv-version":
-      ensure  => absent,
-      before  => File["${name}/.python-version"],
-      require => $_python_local_require ;
+      require => $_python_local_require,
   }
 }

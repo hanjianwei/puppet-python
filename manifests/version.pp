@@ -13,62 +13,49 @@ define python::version(
   require python
   require python::build
 
-  $alias_hash = hiera_hash('python::version::alias', {})
+  case $version {
+    /jython/: { require 'java' }
+    default: { }
+  }
 
-  if has_key($alias_hash, $version) {
-    $to = $alias_hash[$version]
+  $default_env = {
+    'CC' => '/usr/bin/cc',
+  }
 
-    python::alias { $version:
-      ensure => $ensure,
-      to     => $to,
-    }
+  if $::operatingsystem == 'Darwin' {
+    require xquartz
+    include homebrew::config
+    include boxen::config
+    ensure_resource('package', 'readline')
+    Package['readline'] -> Python <| |>
+  }
+
+  $hierdata = hiera_hash('python::version::env', {})
+
+  if has_key($hierdata, $::operatingsystem) {
+    $os_env = $hierdata[$::operatingsystem]
   } else {
+    $os_env = {}
+  }
 
-    case $version {
-      /jython/: { require 'java' }
-      default: { }
-    }
+  if has_key($hierdata, $version) {
+    $version_env = $hierdata[$version]
+  } else {
+    $version_env = {}
+  }
 
-    $default_env = {
-      'CC' => '/usr/bin/cc',
-    }
+  $_env = merge(merge(merge($default_env, $os_env), $version_env), $env)
 
-    if $::operatingsystem == 'Darwin' {
-      require xquartz
-      include homebrew::config
-      include boxen::config
-      ensure_resource('package', 'readline')
-      Package['readline'] -> Python <| |>
-    }
+  if has_key($_env, 'CC') and $_env['CC'] =~ /gcc/ {
+    require gcc
+  }
 
-    $hierdata = hiera_hash('python::version::env', {})
-
-    if has_key($hierdata, $::operatingsystem) {
-      $os_env = $hierdata[$::operatingsystem]
-    } else {
-      $os_env = {}
-    }
-
-    if has_key($hierdata, $version) {
-      $version_env = $hierdata[$version]
-    } else {
-      $version_env = {}
-    }
-
-    $_env = merge(merge(merge($default_env, $os_env), $version_env), $env)
-
-    if has_key($_env, 'CC') and $_env['CC'] =~ /gcc/ {
-      require gcc
-    }
-
-    python { $version:
-      ensure      => $ensure,
-      environment => $_env,
-      python_build  => "${python::build::prefix}/bin/python-build",
-      user        => $python::user,
-      provider    => pythonbuild,
-    }
-
+  python { $version:
+    ensure      => $ensure,
+    environment => $_env,
+    python_build  => "${python::build::prefix}/bin/python-build",
+    user        => $python::user,
+    provider    => pythonbuild,
   }
 
 }

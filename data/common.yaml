@@ -1,11 +1,4 @@
 ---
-python::version::alias:
-  2.7: 2.7.8
-  3.4: 3.4.1
-  pypy: pypy-2.3.1
-  pypy3: pypy3-2.3.1
-  jython: jython-2.7-beta2
-
 python::prefix: '/opt'
 python::provider: 'pyenv'
 python::user: "%{::id}"

@@ -6,7 +6,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
-    boxen (3.6.1)
+    boxen (3.6.2)
 
 GITHUBTARBALL
   remote: boxen/puppet-homebrew
@@ -16,7 +16,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-java
   specs:
-    java (1.2.0)
+    java (1.5.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-repository
@@ -31,7 +31,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: puppetlabs/puppetlabs-stdlib
   specs:
-    stdlib (4.1.0)
+    stdlib (4.3.2)
 
 GITHUBTARBALL
   remote: ripienaar/puppet-module-data
@@ -40,11 +40,11 @@ GITHUBTARBALL
 
 DEPENDENCIES
   autoconf (= 1.0.0)
-  boxen (= 3.6.1)
+  boxen (= 3.6.2)
   homebrew (= 1.9.4)
-  java (= 1.2.0)
+  java (= 1.5.0)
   module-data (= 0.0.3)
   repository (= 2.3.0)
-  stdlib (= 4.1.0)
+  stdlib (= 4.3.2)
   xquartz (= 1.2.0)
 

@@ -73,17 +73,10 @@ The following variables may be automatically overridden with Hiera:
   "3.4.1":
     "CC": "gcc"
 
-# Version aliases, commonly used to bless a specific version
-# Use the "deeper" merge strategy, as with python::version::env
-"python::version::alias":
-  "2.7": "2.7.8"
-  "3.4": "3.4.1"
-```
-
 It is **required** that you include
 [ripienaar/puppet-module-data](https://github.com/ripienaar/puppet-module-data)
 in your boxen project, as this module now ships with many pre-defined versions
-and aliases in the `data/` directory. With this module included, those
+in the `data/` directory. With this module included, those
 definitions will be automatically loaded, but can be overridden easily in your
 own hierarchy.
 

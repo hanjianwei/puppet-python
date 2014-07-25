@@ -14,17 +14,3 @@ current-python() {
   echo "$(pyenv version-name)"
 }
 <%- end -%>
-
-# Load global pythons
-PYTHONS=(/opt/pythons/*)
-export PYTHONS
-
-# Helper for shell prompts and the like
-current-python() {
-  if [ -z "$PYTHON_ROOT" ]; then
-    echo "system"
-  else
-    echo "${PYTHON_ROOT##*/}"
-  fi
-}
-<%- end -%>

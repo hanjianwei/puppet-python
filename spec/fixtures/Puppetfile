@@ -1,8 +1,8 @@
-mod "boxen",       "3.6.1", :github_tarball => "boxen/puppet-boxen"
+mod "boxen",       "3.6.2", :github_tarball => "boxen/puppet-boxen"
 mod "homebrew",    "1.9.4", :github_tarball => "boxen/puppet-homebrew"
 mod "repository",  "2.3.0", :github_tarball => "boxen/puppet-repository"
-mod "stdlib",      "4.1.0", :github_tarball => "puppetlabs/puppetlabs-stdlib"
+mod "stdlib",      "4.3.2", :github_tarball => "puppetlabs/puppetlabs-stdlib"
 mod "xquartz",     "1.2.0", :github_tarball => "boxen/puppet-xquartz"
 mod "autoconf",    "1.0.0", :github_tarball => "boxen/puppet-autoconf"
-mod "java",        "1.2.0", :github_tarball => "boxen/puppet-java"
-mod 'module-data', '0.0.3',  :github_tarball => 'ripienaar/puppet-module-data'
+mod "java",        "1.5.0", :github_tarball => "boxen/puppet-java"
+mod "module-data", "0.0.3", :github_tarball => "ripienaar/puppet-module-data"

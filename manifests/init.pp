@@ -3,33 +3,33 @@
 # This module installs a full pyenv-driven python stack
 #
 class python(
-  $provider = $python::provider,
-  $prefix   = $python::prefix,
-  $user     = $python::user,
-) {
+  $pyenv_root    = $python::config::pyenv_root,
+  $pyenv_user    = $python::config::pyenv_user,
+  $pyenv_version = $python::config::pyenv_version,
+  $pyenv_cache   = $python::config::pyenv_cache,
+) inherits python::config {
+  include python::pyenv
+
   if $::osfamily == 'Darwin' {
     include boxen::config
-  }
 
-  include python::build
-
-  $provider_class = "python::${provider}"
-  include $provider_class
-
-  if $::osfamily == 'Darwin' {
     boxen::env_script { 'python':
-      content  => template('python/python.sh'),
       priority => 'higher',
+      source   => 'puppet:///modules/python/python.sh',
     }
   }
 
   file { '/opt/pythons':
     ensure => directory,
-    owner  => $user,
+    owner  => $pyenv_user,
   }
 
-  Class['python::build'] ->
-  Class[$provider_class] ->
+  file { $pyenv_cache:
+    ensure => directory,
+    owner  => $pyenv_user,
+  }
+
+  Class['python::pyenv'] ->
   Python <| |> ->
   Python_package <| |>
 }

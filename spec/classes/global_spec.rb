@@ -7,7 +7,7 @@ describe 'python::global' do
     let(:params) { {:version => 'system'} }
 
     it do
-      should contain_file('/opt/boxen/pyenv/version')
+      should contain_file('/test/boxen/pyenv/version')
     end
   end
 
@@ -15,7 +15,7 @@ describe 'python::global' do
     let(:params) { {:version => '2.7.8'} }
 
     it do
-      should contain_file('/opt/boxen/pyenv/version').that_requires('Python::Version[2.7.8]')
+      should contain_file('/test/boxen/pyenv/version').that_requires('Python::Version[2.7.8]')
     end
   end
 end

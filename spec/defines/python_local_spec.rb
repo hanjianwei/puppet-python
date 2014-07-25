@@ -21,7 +21,6 @@ describe 'python::local' do
     it do
       should contain_python__version('2.7.8')
 
-      should contain_file('/tmp/.pyenv-version').with_ensure('absent')
       should contain_file('/tmp/.python-version').with({
         :ensure  => 'present',
         :content => "2.7.8\n",
@@ -38,7 +37,6 @@ describe 'python::local' do
     end
 
     it do
-      should contain_file('/tmp/.pyenv-version').with_ensure('absent')
       should contain_file('/tmp/.python-version').with_ensure('absent')
     end
   end

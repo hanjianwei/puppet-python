@@ -11,34 +11,9 @@ describe 'python::version' do
 
         should contain_python('2.7.8').with({
           :ensure     => "installed",
-          :python_build => "/test/boxen/python-build/bin/python-build",
+          :python_build => "/test/boxen/pyenv/plugins/python-build/bin/python-build",
           :provider   => 'pythonbuild',
           :user       => 'testuser',
-        })
-      end
-    end
-
-    context "when env is default" do
-      it do
-        should contain_python('2.7.8').with_environment({
-          "CC" => "/usr/bin/cc",
-          "FROM_HIERA" => "true",
-        })
-      end
-    end
-
-    context "when env is not nil" do
-      let(:params) do
-        {
-          :env => {'SOME_VAR' => "flocka"}
-        }
-      end
-
-      it do
-        should contain_python('2.7.8').with_environment({
-          "CC" => "/usr/bin/cc",
-          "FROM_HIERA" => "true",
-          "SOME_VAR" => "flocka"
         })
       end
     end

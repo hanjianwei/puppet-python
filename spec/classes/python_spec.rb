@@ -5,23 +5,14 @@ describe "python" do
 
   let(:default_params) do
     {
-      :provider => "pyenv",
-      :prefix   => "/test/boxen",
+      :pyenv_root => "/test/pyenv",
     }
   end
 
   let(:params) { default_params }
 
-  it { should contain_class("python::build") }
+  it { should contain_class("python::pyenv") }
   it { should contain_file("/opt/pythons") }
-
-  context "provider is pyenv" do
-    let(:params) {
-      default_params.merge(:provider => "pyenv")
-    }
-
-    it { should contain_class("python::pyenv") }
-  end
 
   context "osfamily is Darwin" do
     let(:facts) {

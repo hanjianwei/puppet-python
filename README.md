@@ -6,9 +6,6 @@ Requires the following boxen modules:
 
 * `boxen >= 3.2.0`
 * `repository >= 2.1`
-* `xquartz` (OS X only)
-* `autoconf` (some python versions)
-* [ripienaar/puppet-module-data](https://github.com/ripienaar/puppet-module-data)
 
 ## About
 
@@ -53,31 +50,3 @@ exec { '/opt/pythons/2.7.8/bin/http get https://api.github.com':
   require => python_package['httpie for 2.7.8']
 }
 ```
-
-## Hiera configuration
-
-The following variables may be automatically overridden with Hiera:
-
-``` yaml
----
-"python::user": "deploy"
-"python::pyenv::ensure": "v20140705"
-
-# Environment variables for building specific versions
-# You'll want to enable hiera's "deeper" merge strategy
-# See http://docs.puppetlabs.com/hiera/1/configuring.html#mergebehavior
-"python::version::env":
-  "2.7.8":
-    "CC": "llvm"
-    "CFLAGS": "-O9 -funroll-loops"
-  "3.4.1":
-    "CC": "gcc"
-
-It is **required** that you include
-[ripienaar/puppet-module-data](https://github.com/ripienaar/puppet-module-data)
-in your boxen project, as this module now ships with many pre-defined versions
-in the `data/` directory. With this module included, those
-definitions will be automatically loaded, but can be overridden easily in your
-own hierarchy.
-
-You can also use JSON if your Hiera is configured for that.

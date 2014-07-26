@@ -5,7 +5,6 @@
 class python(
   $pyenv_root    = $python::config::pyenv_root,
   $pyenv_user    = $python::config::pyenv_user,
-  $pyenv_version = $python::config::pyenv_version,
   $pyenv_cache   = $python::config::pyenv_cache,
 ) inherits python::config {
   include python::pyenv

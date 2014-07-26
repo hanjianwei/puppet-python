@@ -10,10 +10,15 @@ class python::pyenv {
   require python
 
   repository { $python::pyenv_root:
-    ensure => $python::pyenv_version,
     force  => true,
     source => 'yyuu/pyenv',
     user   => $python::pyenv_user
+  }
+  ->
+  repository { "${python::pyenv_root}/plugins/pyenv-virtualenv":
+    force  => true,
+    source => 'yyuu/pyenv-virtualenv',
+    user   => $python::pyenv_user,
   }
 
   file { "${python::pyenv_root}/versions":

@@ -18,6 +18,4 @@ class python::config {
       $pyenv_cache = '/tmp/pythons'
     }
   }
-
-  $pyenv_version = 'v20140705'
 }

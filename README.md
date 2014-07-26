@@ -9,8 +9,9 @@ Requires the following boxen modules:
 
 ## About
 
-This module supports python version management with pyenv.
+This module supports python version management with [pyenv](https://github.com/yyuu/pyenv) and [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv).
 All python versions are installed into `/opt/pythons`.
+
 
 ## Usage
 

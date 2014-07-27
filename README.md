@@ -6,6 +6,7 @@ Requires the following boxen modules:
 
 * `boxen >= 3.2.0`
 * `repository >= 2.1`
+* `stdlib >= 4.3.2`
 
 ## About
 
@@ -56,4 +57,13 @@ exec { '/opt/pythons/2.7.8/bin/http get https://api.github.com':
   cwd     => "~/src/project",
   require => python_package['httpie for 2.7.8']
 }
+```
+
+## Customization
+
+You can use Hiera to customize python environment:
+
+``` yaml
+# /opt/boxen/repo/hiera/users/<username>.yaml
+python::global::version: "2.7.8"
 ```

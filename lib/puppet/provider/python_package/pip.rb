@@ -92,7 +92,7 @@ Puppet::Type.type(:python_package).provide(:pip) do
         target_versions = [@resource[:python_version]]
       end
       target_versions.reject { |py| installed_for? py }.each do |python|
-        pip "install '#{@resource[:package]}'=='#{@resource[:version]}' --index-url '#{@resource[:index_url]}'", python
+        pip "install '#{@resource[:package]}#{@resource[:version]}' --index-url '#{@resource[:index_url]}'", python
       end
     end
   rescue => e

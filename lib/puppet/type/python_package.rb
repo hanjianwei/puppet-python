@@ -64,7 +64,7 @@ Puppet::Type.newtype(:python_package) do
   end
 
   newparam(:version) do
-    defaultto '>= 0'
+    defaultto ''
 
     validate do |v|
       unless v.is_a? String

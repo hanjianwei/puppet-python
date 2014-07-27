@@ -20,6 +20,12 @@ class python::pyenv {
     source => 'yyuu/pyenv-virtualenv',
     user   => $python::pyenv_user,
   }
+  ->
+  repository { "${python::pyenv_root}/plugins/pyenv-pip-rehash":
+    force  => true,
+    source => 'yyuu/pyenv-pip-rehash',
+    user   => $python::pyenv_user,
+  }
 
   file { "${python::pyenv_root}/versions":
     ensure  => symlink,

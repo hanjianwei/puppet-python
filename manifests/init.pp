@@ -30,5 +30,6 @@ class python(
 
   Class['python::pyenv'] ->
   Python <| |> ->
+  Python::Virtualenv <| |> ->
   Python_package <| |>
 }

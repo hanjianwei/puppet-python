@@ -1,3 +1,8 @@
+
+## PLEASE NOTE, THIS PROJECT IS NO LONGER BEING MAINTAINED
+
+I didn't see mioberg's [puppet-python](https://github.com/mloberg/puppet-python) when I started this project. Please use mioberg's version if you prefer pyenv.
+
 # Python Puppet Module for Boxen
 
 [![Build Status](https://travis-ci.org/hanjianwei/puppet-python.png?branch=master)](https://travis-ci.org/hanjianwei/puppet-python)
